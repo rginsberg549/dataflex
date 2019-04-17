@@ -1,0 +1,17 @@
+{% block content %}
+  <h2> Welcome to Data-Flex</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <h3> Upload Control Sheet Here</h3>
+    <input type="file" name="control_sheet_upload">
+    <h3> Upload Report Group Here</h3>
+    <input type="file" name="report_group_upload">
+
+    <p>Press the button below only when all forms have been uploaded.</p>
+
+    <button type="submit">Upload All Files</button>
+  </form>
+
+  <p><a href="{% url 'home' %}">Return to home</a></p>
+{% endblock %}
