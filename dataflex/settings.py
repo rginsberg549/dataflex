@@ -26,7 +26,7 @@ SECRET_KEY = '$y@fw$7i$_n%=bdd8nh^o89mjqa@@ehg&wg715abj@x&jrag!t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sheltered-earth-43309.herokuapp.com']
 
 
 # Application definition
