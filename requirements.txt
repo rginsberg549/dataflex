@@ -9,3 +9,6 @@ flask_restful
 scipy
 sqlalchemy
 xlrd >= 1.0.0
+html5lib
+lxml
+pyexcel-io>=0.5.3
