@@ -1,3 +1,10 @@
 django
 gunicorn
 django-heroku
+pandas
+numpy
+scikit-learn
+flask
+flask_restful
+scipy
+sqlalchemy
