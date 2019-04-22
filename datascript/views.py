@@ -18,8 +18,8 @@ def paul_chopra_upload(request):
         report_group = request.FILES['report_group_upload']
         report_group_df = pd.read_excel(report_group)
 
-        control_sheet_df.columns = control_sheet_df.iloc[2]
-        control_sheet_df.drop(control_sheet_df.index[0:3],inplace=True)
+        control_sheet_df.columns = control_sheet_df.iloc[3]
+        control_sheet_df.drop(control_sheet_df.index[0:4],inplace=True)
         control_sheet_df = control_sheet_df.reset_index(drop=True)
         control_sheet_df = control_sheet_df.infer_objects()
 
