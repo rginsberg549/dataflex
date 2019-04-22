@@ -24,7 +24,7 @@ def paul_chopra_upload(request):
         control_sheet_df = control_sheet_df.infer_objects()
 
         report_group_df.columns = report_group_df.iloc[6]
-        report_group_df.drop(report_group_df.index[0:6],inplace=True)
+        report_group_df.drop(report_group_df.index[0:7],inplace=True)
         report_group_df = report_group_df.reset_index(drop=True)
         report_group_df = report_group_df[~report_group_df['Store'].str.contains("Total")]
         report_group_df = report_group_df[~report_group_df['Store'].str.contains("GRAND TOTAL")]
