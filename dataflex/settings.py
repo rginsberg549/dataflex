@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-#import django_heroku
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -133,4 +133,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '/Users/rginsberg/Desktop/Data-Flex/dataflex
 MEDIA_URL = '/Users/rginsberg/Desktop/Data-Flex/dataflex/media/'
 MEDIA_ROOT = os.path.join(REPOSITORY_ROOT, '/Users/rginsberg/Desktop/Data-Flex/dataflex/media/')
 
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
