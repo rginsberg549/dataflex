@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('datascript/', include('datascript.urls')),
+    path('sheltered-earth-43309.herokuapp.com/', include('datascript.urls')),
     path('admin/', admin.site.urls),
 ]
