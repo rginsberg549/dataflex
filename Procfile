@@ -1,1 +1,1 @@
-web: gunicorn datascript.wsgi --log-file -
+web: gunicorn dataflex.wsgi
