@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 import pandas as pd
 import os
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
 
 class Home(TemplateView):
     template_name = 'home.html'

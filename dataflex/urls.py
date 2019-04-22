@@ -18,6 +18,6 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path('datascript/', include('datascript.urls')),
+    path('/', include('datascript.urls')),
     path('admin/', admin.site.urls),
 ]
