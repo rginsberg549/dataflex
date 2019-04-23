@@ -847,7 +847,7 @@ def paul_chopra_upload(request):
         final_result_exlude_55799.to_excel(file_name)
 
         sio = BytesIO
-        PandasWriter = pandas.ExcelWriter(sio, engine='xlsxwriter')
+        PandasWriter = pd.ExcelWriter(sio, engine='xlsxwriter')
         final_result_exlude_55799.to_excel(PandasWriter, sheet_name= 'sheetname')
         PandasWriter.save()
         
