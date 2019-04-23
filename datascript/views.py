@@ -847,7 +847,7 @@ def paul_chopra_upload(request):
 
         final_result_exlude_55799.to_excel(file_name)
 
-        sio = BytesIO()
+        sio = BytesIO.BytesIO()
         PandasWriter = pd.ExcelWriter(sio, engine='xlsxwriter')
         final_result_exlude_55799.to_excel(PandasWriter, sheet_name= 'sheetname')
         PandasWriter.save()
@@ -855,8 +855,8 @@ def paul_chopra_upload(request):
         sio.seek(0)
         workbook = sio.getvalue()
         
-        response = StreamingHttpResponse(workbook, content_type='application/ms-excel')
-        response['Content-Disposition'] = 'attachment; filename= %s' % file_name
+        response = StreamingHttpResponse(workbook, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response['Content-Disposition'] = 'attachment; filename=%s' % file_name
         return response
     return render(request, 'upload.html')
 
