@@ -845,8 +845,6 @@ def paul_chopra_upload(request):
         final_result_exlude_55799['Date'] = final_result_exlude_55799['Date'].astype(str)
         final_result_exlude_55799['Class'] = final_result_exlude_55799['Class'].astype(int)
 
-        final_result_exlude_55799.to_excel(file_name)
-
         sio = BytesIO()
         PandasWriter = pd.ExcelWriter(sio, engine='xlsxwriter')
         final_result_exlude_55799.to_excel(PandasWriter, sheet_name= 'sheetname')
@@ -854,9 +852,8 @@ def paul_chopra_upload(request):
         PandasWriter.close()
         
         sio.seek(0)
-        workbook = sio.getvalue()
         
-        response = StreamingHttpResponse(workbook, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response = StreamingHttpResponse(sio, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
         response['Content-Disposition'] = 'attachment; filename=%s' % file_name
         return response
     return render(request, 'upload.html')
