@@ -857,7 +857,7 @@ def paul_chopra_upload(request):
         
         response = StreamingHttpResponse(workbook, content_type='application/ms-excel')
         response['Content-Disposition'] = 'attachment; filename= %s' % file_name
-    
+        return response
     return render(request, 'upload.html')
 
 def steve_ginsberg_upload(request):
