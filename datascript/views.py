@@ -838,7 +838,7 @@ def paul_chopra_upload(request):
                              'Class',
                             'Name']]
 
-        file_name = 'Final Result Export-WE-' + str(WE_DATE)
+        file_name = 'Final Result Export-WE-' + str(WE_DATE) + '.xlsx'
 
         final_result_exlude_55799 = final_result.copy(deep=True)
         final_result_exlude_55799 = final_result_exlude_55799[final_result_exlude_55799['Class'] != str(55799)]
