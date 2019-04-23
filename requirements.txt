@@ -10,3 +10,4 @@ scipy
 sqlalchemy
 xlrd >= 1.0.0
 openpyxl
+xlsxwriter
