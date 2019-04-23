@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, StreamingHttpResponse
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 from django.conf.urls.static import static
@@ -8,6 +8,7 @@ import pandas as pd
 import os
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
+from io import BytesIO
 
 class Home(TemplateView):
     template_name = 'home.html'
@@ -844,6 +845,17 @@ def paul_chopra_upload(request):
         final_result_exlude_55799['Class'] = final_result_exlude_55799['Class'].astype(int)
 
         final_result_exlude_55799.to_excel(file_name)
+
+        sio = BytesIO
+        PandasWriter = pandas.ExcelWriter(sio, engine='xlsxwriter')
+        final_result_exlude_55799.to_excel(PandasWriter, sheet_name= 'sheetname')
+        PandasWriter.save()
+        
+        sio.seek(0)
+        workbook = sio.getvalue()
+        
+        response = StreamingHttpResponse(workbook, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        response['Content-Disposition'] = 'attachment; filename=%s' % file_name
     
     return render(request, 'upload.html')
 
