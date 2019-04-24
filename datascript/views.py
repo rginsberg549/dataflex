@@ -844,6 +844,7 @@ def paul_chopra_upload(request):
         final_result_exlude_55799 = final_result_exlude_55799[final_result_exlude_55799['Class'] != str(55799)]
         final_result_exlude_55799['Date'] = final_result_exlude_55799['Date'].astype(str)
         final_result_exlude_55799['Class'] = final_result_exlude_55799['Class'].astype(int)
+        final_result_exlude_55799 = final_result_exlude_55799.reset_index(drop = True)
 
         sio = BytesIO()
         PandasWriter = pd.ExcelWriter(sio, engine='xlsxwriter')
