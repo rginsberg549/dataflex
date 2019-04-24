@@ -609,7 +609,7 @@ def paul_chopra_upload(request):
                             'TRNSTYPE': 'GENERAL JOURNAL',
                             'Date': WE_DATE,
                             'ACCNT': 1030,
-                           'Name': faf_store_number})
+                           'Name': 'S-' + faf_store_number})
 
         df_royalty = pd.DataFrame({'TRNSID': roy_faf_transid,
                             'Amount': roy_faf_ipc_df['Royalty'] * -1,
@@ -618,7 +618,7 @@ def paul_chopra_upload(request):
                             'TRNSTYPE': 'GENERAL JOURNAL',
                             'Date': WE_DATE,
                             'ACCNT': 1030,
-                          'Name': faf_store_number})
+                          'Name': 'S-' + faf_store_number})
 
         df_faf_fees = pd.DataFrame({'TRNSID': roy_faf_transid,
                             'Amount': roy_faf_ipc_df['Faf'],
