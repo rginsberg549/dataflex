@@ -4,15 +4,23 @@ from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from django.views import generic
 import pandas as pd
 import os
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from io import BytesIO
 import xlwt
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
 
 class Home(TemplateView):
     template_name = 'home.html'
+
+class SignUp(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'signup.html'
 
 def paul_chopra_upload(request):
     if request.method == 'POST':
@@ -22,13 +30,13 @@ def paul_chopra_upload(request):
         report_group = request.FILES['report_group_upload']
         report_group_df = pd.read_excel(report_group)
 
-        control_sheet_df.columns = control_sheet_df.iloc[3]
-        control_sheet_df.drop(control_sheet_df.index[0:4],inplace=True)
+        control_sheet_df.columns = control_sheet_df.iloc[2]
+        control_sheet_df.drop(control_sheet_df.index[0:3],inplace=True)
         control_sheet_df = control_sheet_df.reset_index(drop=True)
         control_sheet_df = control_sheet_df.infer_objects()
 
-        report_group_df.columns = report_group_df.iloc[6]
-        report_group_df.drop(report_group_df.index[0:7],inplace=True)
+        report_group_df.columns = report_group_df.iloc[5]
+        report_group_df.drop(report_group_df.index[0:6],inplace=True)
         report_group_df = report_group_df.reset_index(drop=True)
         report_group_df = report_group_df[~report_group_df['Store'].str.contains("Total")]
         report_group_df = report_group_df[~report_group_df['Store'].str.contains("GRAND TOTAL")]
@@ -60,7 +68,8 @@ def paul_chopra_upload(request):
                                             'Unit Sales',
                                             'Drinks Sales',
                                             'Misc Sales' ]]
-
+        
+        roy_faf_ipc_df = roy_faf_ipc_df.fillna(0)
         roy_faf_ipc_df= roy_faf_ipc_df.groupby(['Store Number'], as_index=False).sum()
         roy_faf_ipc_df['Total Sales'] = roy_faf_ipc_df['Unit Sales'] + roy_faf_ipc_df['Drinks Sales'] + roy_faf_ipc_df['Misc Sales']
         roy_faf_ipc_df['Royalty'] = roy_faf_ipc_df['Total Sales'] * .08
