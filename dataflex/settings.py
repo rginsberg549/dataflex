@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import django_heroku
+#import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +26,7 @@ SECRET_KEY = '$y@fw$7i$_n%=bdd8nh^o89mjqa@@ehg&wg715abj@x&jrag!t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sheltered-earth-43309.herokuapp.com']
+ALLOWED_HOSTS = ['sheltered-earth-43309.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'dataflex.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,4 +133,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '/Users/rginsberg/Desktop/Data-Flex/dataflex
 MEDIA_URL = '/Users/rginsberg/Desktop/Data-Flex/dataflex/media/'
 MEDIA_ROOT = os.path.join(REPOSITORY_ROOT, '/Users/rginsberg/Desktop/Data-Flex/dataflex/media/')
 
-django_heroku.settings(locals())
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+#django_heroku.settings(locals())
